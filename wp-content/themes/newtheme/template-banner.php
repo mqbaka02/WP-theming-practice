@@ -1,4 +1,12 @@
-<?php get_header(); ?>
+<?php
+/**
+ * Template Name: Page with banner
+ */
+
+ //Add the code of page tempalte here
+?>
+<?php
+get_header(); ?>
 <?php //wp_title(); 
 ?>
 

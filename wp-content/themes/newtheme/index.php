@@ -9,8 +9,10 @@
                 <div class="card" style="width: 18rem;">
                     <img src="<?= the_post_thumbnail_url() ?>" class="card-img-top" alt="Post feature image">
                     <!--
-                    <?php //the_post_thumbnail('post_thumbnail', ['class' => 'card-img-top', 'alt' => 'Post feature image']) ?>
-                    <?php //the_post_thumbnail('medium', ['class' => 'card-img-top', 'alt' => 'Post feature image']) ?>
+                    <?php //the_post_thumbnail('post_thumbnail', ['class' => 'card-img-top', 'alt' => 'Post feature image']) 
+                    ?>
+                    <?php //the_post_thumbnail('medium', ['class' => 'card-img-top', 'alt' => 'Post feature image']) 
+                    ?>
                     -->
                     <div class="card-body">
                         <h5 class="card-title"><?php the_title() ?></h5>
@@ -23,6 +25,14 @@
             </div>
         <?php endwhile ?>
     </div>
+
+    <?php m_pagination() ?>
+
+    <nav aria-label="Page navigation example">
+            <?= paginate_links(['type'=> 'list']) ?>
+    </nav>
+
+
 <?php else : ?>
     <h1>No posts</h1>
 <?php endif ?>
