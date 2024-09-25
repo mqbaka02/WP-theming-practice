@@ -5,11 +5,7 @@
 
  //Add the code of page tempalte here
 ?>
-<?php
-get_header(); ?>
-<?php //wp_title(); 
-?>
-
+<?php get_header(); ?>
 <?php if (have_posts()) : ?>
     <?php while (have_posts()): the_post(); ?>
         <h1><?php the_title() ?></h1>

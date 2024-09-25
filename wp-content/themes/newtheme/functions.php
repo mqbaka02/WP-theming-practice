@@ -1,11 +1,16 @@
 <?php
 /*Define actions */
-function m_add_title_support_to_theme () {
+function m_add_support_to_theme () {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     add_theme_support('menus');
     register_nav_menu('header', 'This is the header menu');
     register_nav_menu('footer', 'This is the footer menu');
+
+    add_image_size('card-header', 350, 215, true);
+    /*remove_image_size('medium');//remove an already defined size
+    **add_image_size('medium', 500, 500, true);//replace it with a new one
+    */
 }
 
 function m_register_assets () {
@@ -61,11 +66,34 @@ function m_pagination() {
     echo "</nav>";
 }
 
+function m_init() {
+    register_taxonomy('sport', 'post', [
+        'labels' => [
+            'name' => 'Sport',
+            'singular_name' => 'Sport',
+            'plural_name' => 'Sports',
+            'search_items' => 'Search for sport',
+            'all_items' => 'All sports',
+            'edit_items' => 'Edit sport',
+            'update_item' => 'Update sport',
+            'add_new_item' => 'Add new sport',
+            'new_item_name' => 'Add new sport name',
+            'menu_name' => 'Sport'
+        ],
+        'show_in_rest'=> true,
+        'hierarchical'=> true
+    ]);
+}
+
 /*Add actions */
-add_action('after_setup_theme', 'm_add_title_support_to_theme');
+add_action('init', 'm_init');
+add_action('after_setup_theme', 'm_add_support_to_theme');
 add_action('wp_enqueue_scripts', 'm_register_assets');
 add_filter('document_title_separator', 'm_theme_title_separator');
 add_filter('nav_menu_css_class', 'm_menu_class');
 add_filter('nav_menu_link_attributes', 'm_menu_link_class');
+
+require_once('metaboxes/sponso.php');
+SponsoMetaBox::register();
 
 // add_filter('document_title_parts', 'm_doc_title_parts');

@@ -13,6 +13,9 @@
                     ?>
                     <?php //the_post_thumbnail('medium', ['class' => 'card-img-top', 'alt' => 'Post feature image']) 
                     ?>
+                    <?php //the_post_thumbnail('card-header', ['class' => 'card-img-top', 'alt' => 'Post feature image'])
+                    //REFER TO functions.php FOR ADDING CUSTOM IMAGE SIZES
+                    ?>
                     -->
                     <div class="card-body">
                         <h5 class="card-title"><?php the_title() ?></h5>
