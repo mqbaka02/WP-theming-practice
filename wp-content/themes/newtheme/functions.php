@@ -78,10 +78,12 @@ function m_init() {
             'update_item' => 'Update sport',
             'add_new_item' => 'Add new sport',
             'new_item_name' => 'Add new sport name',
-            'menu_name' => 'Sport'
+            'menu_name' => 'Sport',
+
         ],
         'show_in_rest'=> true,
-        'hierarchical'=> true
+        'hierarchical'=> true,
+        'show_admin_column' => true
     ]);
 }
 
