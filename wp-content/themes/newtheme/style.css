@@ -2,3 +2,11 @@
 Theme Name: newtheme
 Author: mqbaka
 */
+.image-container{
+    max-width: 100%;
+}
+
+.image-container img{
+    max-width: 100%;
+    height: auto;
+}

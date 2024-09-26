@@ -15,8 +15,11 @@ function m_add_support_to_theme () {
 
 function m_register_assets () {
     wp_register_style('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css');
+    // wp_register_style('style', 'style.css');
     wp_register_script('bootstrap', 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js', [], false, true);
+    wp_enqueue_style('newtheme-style', get_stylesheet_uri());
     wp_enqueue_style('bootstrap');
+    // wp_enqueue_style('style');
     wp_enqueue_script('bootstrap');
 }
 
@@ -84,6 +87,15 @@ function m_init() {
         'show_in_rest'=> true,
         'hierarchical'=> true,
         'show_admin_column' => true
+    ]);
+    register_post_type('belonging', [
+        'label'=> 'Belonging',
+        'public'=> true,
+        'menu_position'=> 3,//the position in the wordpress sidebar menu
+        'menu_icon'=> 'dashicons-building',// list of preset icons -> https://developer.wordpress.org/resource/dashicons/#migrate
+        'supports'=> ['title', 'editor', 'thumbnail'],
+        'show_in_rest'=> true,
+        'has_archive'=> true
     ]);
 }
 
