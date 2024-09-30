@@ -110,4 +110,7 @@ add_filter('nav_menu_link_attributes', 'm_menu_link_class');
 require_once('metaboxes/sponso.php');
 SponsoMetaBox::register();
 
+require_once('options/agence.php');
+AgenceMenuPage::register();
+
 // add_filter('document_title_parts', 'm_doc_title_parts');
