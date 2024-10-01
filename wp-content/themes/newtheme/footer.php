@@ -16,6 +16,9 @@
             </div>
         </nav>
     </footer>
+    <div>
+        <?= get_option('agency_schedule') ?>
+    </div>
     <?php wp_footer() ?>
     </body>
 
