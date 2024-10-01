@@ -113,4 +113,47 @@ SponsoMetaBox::register();
 require_once('options/agence.php');
 AgenceMenuPage::register();
 
-// add_filter('document_title_parts', 'm_doc_title_parts');
+add_filter('manage_belonging_posts_columns', function ($columns) {
+    return [
+        'cb'=> $columns['cb'],
+        'thumbnail'=> 'Miniature',
+        'title'=> $columns['title'],
+        'date'=> $columns['date']
+    ];
+});
+
+add_filter('manage_belonging_posts_custom_column', function ($column, $postId){
+    if ($column=== 'thumbnail') {
+        the_post_thumbnail('thumbnail', $postId);
+    }
+}, 10, 2);
+
+add_action('admin_enqueue_scripts', function () {
+    wp_enqueue_style('admin_m_theme', get_template_directory_uri() . '/assets/admin.css');
+});
+
+add_filter('manage_post_posts_columns', function ($columns) {
+    $newCols= [];
+    foreach ($columns as $k=> $v) {
+        if ($k=== 'date') {
+            $newCols['sponso']= 'Sponsorized post';
+        }
+        $newCols[$k]= $v;
+    }
+    return $newCols;
+});
+
+
+add_filter('manage_post_posts_custom_column', function ($column, $postId){
+    $class= '';
+    if ($column=== 'sponso') {
+        if(!empty(get_post_meta($postId, SponsoMetaBox::META_KEY, true))) {
+            $class= 'yes';
+        } else {
+            $class= 'no';
+        }
+        ?>
+        <div class="bullet bullet-<?= $class ?>"></div>
+        <?php
+    }
+}, 10, 2);

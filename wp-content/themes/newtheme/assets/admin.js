@@ -1,0 +1,1 @@
+jQuery('.m_datepicker').flatpickr({});
